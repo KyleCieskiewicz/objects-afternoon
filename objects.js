@@ -13,7 +13,7 @@ var user = {
 // Code Here
 user.email = 'jimbob@yahoo.com';
 user.alertUser = function() {
-    alert(user.name);
+    console.log(user.name);
 }
 
 
@@ -21,20 +21,22 @@ user.alertUser = function() {
 
 // Code Here
 for (var key in user) {
-    alert(user[key]);
+    console.log(user[key]);
 }
 
 
 // Now loop over your user object and alert each of the values for each key.
 
 // Code Here
-
+for (var key in user) {
+    console.log(key);
+}
 
 
 // Remove the username from your user object
 
 // Code Here
-
+delete user.name;
 
 
 // Create an object called creditCard that has number, cvc, type, and limit properties and assign them appropriate values.
@@ -66,21 +68,18 @@ var alternating = 'bonusCategories';
     */
 
 // Code Here
-creditCard['bonusCategories'] = alternating;
-creditCard.bonusCategories = [
-    {departmentStores: 5,
-    gasStations: 7,
-    amazon: 12}
-];
+
+creditCard[alternating] = [{Oil: "3%"}, {Credit: "5%"}, {Debit: "2%"}];
+creditCard.bank = {name: "Exxon", address: "E Mogul St"};
 
 
 // Write a function that will take your creditCard object and user object as arguments and combine them into one object. /* HINT: You will need a for..in loop */
 
 // Code Here
 function objs(creditCard, user) {
-    for (var key in user) {
-        if (user.hasOwnProperty(key)) creditCard[key] = user[key];
-    }
+    var obj = {};
+    for (var key in creditCard) { obj[key] = creditCard[key]; }
+    for (var key in user) { obj[key] = user[key]; }
     return obj;
 }
 
@@ -95,13 +94,13 @@ var obj = {
   };
 
   // Code Here
-function willLoop() {
-    for (var i = 0; i < obj.allies.length; i++) {
-        if (obj.allies[i] === 'LillleFinger') {
-            obj.allies[i] = 'Dragon Lady';
+  function loop() {
+    for (var key in obj.allies) {
+        if (obj.allies[key] === 'LittleFinger') {
+            obj.allies[key] = 'Dragon Lady';
         }
     }
-    obj.alive = 'More Than Ever';
+    obj.alive = 'More than Ever';
     return obj;
 }
   
